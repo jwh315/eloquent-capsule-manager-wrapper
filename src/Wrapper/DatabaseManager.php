@@ -3,7 +3,7 @@
 namespace CapsuleManager\Wrapper;
 
 use Illuminate\Database\DatabaseManager as EloquentDatabaseManager;
-use Illuminate\Database\MySqlConnection;
+use Illuminate\Database\Connectors\ConnectionFactory;
 
 /**
  * Class DatabaseManager
@@ -17,6 +17,8 @@ class DatabaseManager extends EloquentDatabaseManager
 	 */
 	public function addDefaultConnection(\PDO $pdo)
 	{
-		$this->connections['default'] = new MySqlConnection($pdo);
+		$config['driver'] = $pdo->getAttribute(constant("PDO::ATTR_DRIVER_NAME"));
+		$connector = $this->factory->createConnector($config);
+		$this->connections['default'] = new $connector($pdo);
 	}
 }
