@@ -3,7 +3,6 @@
 namespace CapsuleManager\Wrapper;
 
 use Illuminate\Database\DatabaseManager as EloquentDatabaseManager;
-use Illuminate\Database\Connectors\ConnectionFactory;
 
 /**
  * Class DatabaseManager
