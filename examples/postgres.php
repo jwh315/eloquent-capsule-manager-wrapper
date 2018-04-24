@@ -7,7 +7,7 @@ use Illuminate\Events\Dispatcher;
 include '../vendor/autoload.php';
 include '../.env.php';
 
-$dsn = "sqlite:host=" . DBHOST;
+$dsn = "pgsql:host=" . DBHOST;
 $pdo = new \PDO($dsn, DBUSER, DBPASS);
 
 $capsule = new Manager($pdo);
