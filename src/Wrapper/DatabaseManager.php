@@ -24,6 +24,14 @@ class DatabaseManager extends EloquentDatabaseManager
 		$this->connections['default'] = $this->createConnection($driver, $pdo);
 	}
 
+	/**
+	 * Creates a new connection based on the driver PDO was configured to use.
+	 *
+	 * @param string $driver
+	 * @param \PDO $pdo
+	 * @return Illuminate\Database\Connection
+	 * @throws \InvalidArgumentException
+	 */
 	public function createConnection(string $driver, \PDO $pdo) {
 
         switch ($driver) {
